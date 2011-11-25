@@ -88,12 +88,15 @@ Making Your Changes
 Authors
 =======
 
-  * Akash Manohar J (akash@akash.im)
-  * Sean Grove (sean@gobushido.com)
+  * [Akash Manohar J](https://github.com/HashNuke) (akash@akash.im)
+  * [Sean Grove](https://github.com/sgrove) (sean@gobushido.com)
 
 Thanks
 ======
-Huge thanks to the Mailgun guys for such an amazing service! No time spent on mailservers == way more time spent drinking!
+
+ * Huge thanks to the [Mailgun guys](http://mailgun.net) for such an amazing service! No time spent on mailservers == way more time spent drinking!
+ * [Yomi Colledge](https://github.com/baphled) for his contributions 
+
 
 License & Copyright
 ===================
