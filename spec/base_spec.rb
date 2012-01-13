@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Mailgun::Base do
 
   it "should raise an error if the api_key has not been set" do
+    # "11111111111 #{Mailgun.api_key.nil?}".should == ""
     expect do
       Mailgun()
     end.should raise_error ArgumentError

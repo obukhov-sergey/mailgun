@@ -15,3 +15,16 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+
+# .gitignore files below are taken from
+# https://github.com/github/gitignore
+
+# emacs .gitignore
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+.\#*

@@ -27,6 +27,19 @@ module Mailgun
     def routes
       @routes ||= Mailgun::Route.new(self)
     end
+
+    def logs
+      @logs ||= Mailgun::Log.new(self)
+    end
+
+    def bounces
+      @bounces ||= Mailgun::Bounce.new(self)
+    end
+
+    def mail
+      @mail ||= Mailgun::Mail.new(self)
+    end
+
   end
 
 

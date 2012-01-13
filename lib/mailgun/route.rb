@@ -4,7 +4,7 @@ module Mailgun
     def initialize(mailgun)
       @mailgun = mailgun
     end
-    
+
     def list(limit=100, skip=0)
       Mailgun.submit(:get, route_url, :limit => limit, :skip => skip)["items"] || []
     end
@@ -49,11 +49,11 @@ module Mailgun
 
       Mailgun.submit(:put, route_url(route_id), data)
     end
-    
+
     def destroy(route_id)
       Mailgun.submit(:delete, route_url(route_id))["id"]
     end
-    
+
     private
 
     def route_url(route_id=nil)

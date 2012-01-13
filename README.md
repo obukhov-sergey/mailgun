@@ -12,7 +12,7 @@ Mailgun exposes the following resources:
   * Messages
   * Mailboxes
 
-Currently the gem only exposes the Mailbox and Routes APIs, but patches are welcome (and easy!). 
+Currently the gem only exposes the Mailbox and Routes APIs, but patches are welcome (and easy!).
 
 Usage
 =====
@@ -29,17 +29,17 @@ Mailboxes:
 
     # or alternatively:
     @mailgun = Mailgun(:api_key => 'your-api-key')
-    
+
     # Create a mailbox
     @mailgun.mailboxes.create "new-mailbox@your-domain.com", "password"
-    
+
     # List all mailboxes that belong to a domain
     @mailgun.mailboxes.list "domain.com"
-    
+
     # Destroy a mailbox (queue bond-villian laughter)
     # "I'm sorry Bond, it seems your mailbox will be... destroyed!"
     @mailbox.mailboxes.destroy "bond@mi6.co.uk"
-    
+
 Routes:
 
     # Initialize your Mailgun object:
@@ -52,7 +52,7 @@ Routes:
          [:match_recipient, "apowers@mi5.co.uk"],
          [[:forward, "http://my-site.com/incoming-mail-route"],
           [:stop]]
-    
+
     # List all routes that belong to a domain
     # limit the query to 100 routes starting from 0
     @mailgun.routes.list 100, 0
@@ -67,12 +67,52 @@ Routes:
          :filter   => [:match_header, :subject, "*.support"],
          :actions  => [[:forward, "http://new-site.com/incoming-emails"]]
          }
-    
+
     # Destroy a route via its id
     @mailbox.routes.destroy "4e97c1b2ba8a48567f007fb6"
 
 Supported route filters are: `:match_header`, `:match_recipient`, and `:catch_all`
 Supported route actions are: `:forward`, and `:stop`
+
+Bounces:
+
+    # Initialize your Mailgun object:
+    @mailgun = Mailgun(:api_key => 'your-api-key')
+
+    # List all bounces related to a domain
+    # limit the query to 100 bounces starting from 0
+    @mailgun.bounces.list "domain.com", 100, 0
+
+    # Get the details of a bounce for a certain address
+    @mailgun.bounces.find "domain.com", "foo@bar.com"
+
+    # Destroy a bounce for a certain address
+    @mailbox.bounces.destroy "domain.com", "foo@bar.com"
+
+Messages:
+
+    # Initialize your Mailgun object:
+    @mailgun = Mailgun(:api_key => 'your-api-key')
+
+    # Send an email
+    @mailgun.mail.send_email @sample_domain,
+        :to => ["bob@example.com", "mary@example.com"],
+        :from => "tom@example.com",
+        :cc => "support@example.com",
+        :bcc => "admin@example.com",
+        :subject => "Hello",
+        :text => "Hi there!",
+        :html => "<html>Hi</html>",
+        :tags => ["tag1", "tag2"],
+        :attachments => [file1, file2],
+        :at => "Fri, 25 Oct 2011 23:10:10 -0000",
+        :dkim => true,
+        :track => true,
+        :track_opens => true,
+        :track_clicks => false,
+        :testmode => true,
+        "h:X-My-Header" => "a custom mime header",
+        "v:my-var" => '{"my_message_id": 123}'
 
 
 Making Your Changes
@@ -95,7 +135,7 @@ Thanks
 ======
 
  * Huge thanks to the [Mailgun guys](http://mailgun.net) for such an amazing service! No time spent on mailservers == way more time spent drinking!
- * [Yomi Colledge](https://github.com/baphled) for his contributions 
+ * [Yomi Colledge](https://github.com/baphled) for his contributions
 
 
 License & Copyright
